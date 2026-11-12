@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 const emailSources = new Set([
   "email-yuval-internal",
+  "hameanyenim",
   "influencer-shevi",
   "influencer-yaakov",
 ]);
