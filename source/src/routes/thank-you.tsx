@@ -19,7 +19,7 @@ export function ThankYou() {
         <Flower size={80} className="mb-6" />
         <h1 className="font-display-tight text-5xl sm:text-7xl">איזה יופי שנרשמתם! 🎉</h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
-          קיבלנו את הפרטים שלכם. לחצו למטה כדי להשלים את ההרשמה בזום. אפשר גם להצטרף לקבוצת הוואטסאפ של יובל.
+          קיבלנו את הפרטים שלכם. לחצו למטה כדי להשלים את ההרשמה בזום. אפשר גם להצטרף לקבוצת הוואטסאפ שלנו.
         </p>
         <ul className="mt-8 flex flex-wrap justify-center gap-2.5 text-[0.95rem] font-semibold">
           {["📅 יום רביעי | 18.11.2026 (ח׳ כסלו)", "🕣 בשעה 20:30", "💻 בזום, מהבית"].map((detail) => (
@@ -38,7 +38,7 @@ export function ThankYou() {
         </Button>
         <Button asChild className="btn-pill mt-4 h-auto max-w-full whitespace-normal bg-brand-pink text-brand-blue shadow-soft hover:bg-brand-pink hover:shadow-card">
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-            הצטרפו לקבוצת הוואטסאפ של יובל ←
+            הצטרפו לקבוצת הוואטסאפ שלנו ←
           </a>
         </Button>
         <Button asChild variant="link" className="mt-5 h-auto text-base text-brand-blue">
