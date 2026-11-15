@@ -1,7 +1,7 @@
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 const sectionSelector = '#root[data-source="hitdabrut"] > div > section:not(#register)';
-const resistanceRange = 68;
-const resistance = 0.48;
+const resistanceRange = 105;
+const resistance = 0.18;
 
 window.addEventListener("wheel", (event) => {
   if (!event.cancelable || event.defaultPrevented || event.ctrlKey || event.shiftKey
@@ -9,7 +9,7 @@ window.addEventListener("wheel", (event) => {
       || event.deltaY <= 0 || Math.abs(event.deltaX) >= event.deltaY) return;
 
   const delta = event.deltaY * (event.deltaMode === WheelEvent.DOM_DELTA_LINE ? 16 : 1);
-  const marker = innerHeight * 0.65;
+  const marker = innerHeight * 0.5;
   const boundary = Array.from(document.querySelectorAll(sectionSelector))
     .map(section => section.getBoundingClientRect().top - marker)
     .find(distance => distance > -resistanceRange && distance <= delta);

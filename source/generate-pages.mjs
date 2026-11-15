@@ -9,7 +9,7 @@ for (const source of channels) {
   const landingWithScroll = source === "hitdabrut"
     ? landing.replace("</head>", [
       '  <link rel="stylesheet" href="/merivah-lekirva-webinar/hitdabrut-scroll.css?v=3">',
-      '  <script type="module" src="/merivah-lekirva-webinar/hitdabrut-scroll.js"></script>',
+      '  <script type="module" src="/merivah-lekirva-webinar/hitdabrut-scroll.js?v=2"></script>',
       "</head>",
     ].join("\n"))
     : landing;
