@@ -6,10 +6,14 @@ for (const source of channels) {
   const channelDir = "dist/" + source;
   await mkdir(channelDir + "/thank-you", { recursive: true });
   const landing = template.replace('id="root"', 'id="root" data-source="' + source + '"');
-  const landingWithStyles = source === "hitdabrut"
-    ? landing.replace("</head>", '  <link rel="stylesheet" href="/merivah-lekirva-webinar/hitdabrut-scroll.css">\n</head>')
+  const landingWithScroll = source === "hitdabrut"
+    ? landing.replace("</head>", [
+      '  <link rel="stylesheet" href="/merivah-lekirva-webinar/hitdabrut-scroll.css?v=3">',
+      '  <script type="module" src="/merivah-lekirva-webinar/hitdabrut-scroll.js"></script>',
+      "</head>",
+    ].join("\n"))
     : landing;
-  await writeFile(channelDir + "/index.html", landingWithStyles);
+  await writeFile(channelDir + "/index.html", landingWithScroll);
   const thanks = landing.replace('id="root"', 'id="root" data-page="thanks"')
     .replace(/<title>.*?<\/title>/, "<title>תודה שנרשמתם — ממריבה לקרבה</title>");
   await writeFile(channelDir + "/thank-you/index.html", thanks);
