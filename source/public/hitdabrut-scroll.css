@@ -3,7 +3,7 @@
   #root[data-source="hitdabrut"] > div > section:has(> :is(.max-w-4xl.bg-brand-blue, .bg-gift))::after {
     content: "";
     display: block;
-    block-size: clamp(180px, 34svh, 320px);
+    block-size: clamp(360px, 68svh, 640px);
   }
 
   #root[data-source="hitdabrut"] > div > section > :is(.max-w-4xl.bg-brand-blue, .bg-gift) {
