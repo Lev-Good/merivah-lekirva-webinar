@@ -8,8 +8,7 @@ for (const source of channels) {
   const landing = template.replace('id="root"', 'id="root" data-source="' + source + '"');
   const landingWithScroll = source === "hitdabrut"
     ? landing.replace("</head>", [
-      '  <link rel="stylesheet" href="/merivah-lekirva-webinar/hitdabrut-scroll.css?v=3">',
-      '  <script type="module" src="/merivah-lekirva-webinar/hitdabrut-scroll.js?v=2"></script>',
+      '  <link rel="stylesheet" href="/merivah-lekirva-webinar/hitdabrut-scroll.css?v=4">',
       "</head>",
     ].join("\n"))
     : landing;

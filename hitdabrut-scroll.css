@@ -1,6 +1,18 @@
 @media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) and (animation-range: entry 0% entry 80%) {
-    #root[data-source="hitdabrut"] > div > section:not(#register) > :first-child {
+  /* Let these two cards hold their place while the page keeps scrolling. */
+  #root[data-source="hitdabrut"] > div > section:has(> :is(.max-w-4xl.bg-brand-blue, .bg-gift))::after {
+    content: "";
+    display: block;
+    block-size: clamp(180px, 34svh, 320px);
+  }
+
+  #root[data-source="hitdabrut"] > div > section > :is(.max-w-4xl.bg-brand-blue, .bg-gift) {
+    position: sticky;
+    inset-block-start: clamp(24px, 9svh, 80px);
+  }
+
+  @supports (animation-timeline: view()) and (animation-range: entry 0% entry 50%) {
+    #root[data-source="hitdabrut"] > div > section:not(#register) > :first-child:not(.max-w-4xl.bg-brand-blue, .bg-gift) {
       animation: hitdabrut-section-enter linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 50%;
