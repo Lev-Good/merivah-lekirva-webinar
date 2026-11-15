@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 
 const ZOOM_REGISTER_URL = "https://us06web.zoom.us/webinar/register/WN_yGDggiizS7S9jJhc3S7GwA";
-const WHATSAPP_URL = "https://chat.whatsapp.com/Kh9aZcX6IkRE6XYOl8tFf4";
+const WHATSAPP_URL = "https://chat.whatsapp.com/Kh9aZcX6IkRE6XYOl8tFf4?s=cl&p=a&iam=2";
 
 
 export function ThankYou() {
@@ -19,7 +19,7 @@ export function ThankYou() {
         <Flower size={80} className="mb-6" />
         <h1 className="font-display-tight text-5xl sm:text-7xl">איזה יופי שנרשמתם! 🎉</h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
-          קיבלנו את הפרטים שלכם. לחצו למטה כדי להשלים את ההרשמה בזום — ותקבלו גם תזכורת לפני המועד בוואטסאפ.
+          קיבלנו את הפרטים שלכם. לחצו למטה כדי להשלים את ההרשמה בזום. אפשר גם להצטרף לקבוצת הוואטסאפ של יובל.
         </p>
         <ul className="mt-8 flex flex-wrap justify-center gap-2.5 text-[0.95rem] font-semibold">
           {["📅 יום רביעי | 18.11.2026 (ח׳ כסלו)", "🕣 בשעה 20:30", "💻 בזום, מהבית"].map((detail) => (
