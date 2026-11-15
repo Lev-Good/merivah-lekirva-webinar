@@ -3,9 +3,12 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Flower } from "@/components/landing/Flower";
 import { RegistrationForm } from "@/components/landing/RegistrationForm";
+import { ChromaGrid } from "@/components/landing/ChromaGrid";
+import BorderGlow from "@/components/landing/BorderGlow";
 import { Button } from "@/components/ui/button";
 import yuvalPhoto from "@/assets/yuval-workshop.jpeg.asset.json";
-import heroBg from "@/assets/hero-bg.jpg.asset.json";
+import heroConflictDolls from "@/assets/hero-conflict-dolls.png.asset.json";
+import "@/components/landing/Hero.css";
 import yuvalLogo from "@/assets/yuval-logo.png.asset.json";
 import testimonial7 from "@/assets/testimonial-new-7.png.asset.json";
 import testimonial8 from "@/assets/testimonial-new-8.png.asset.json";
@@ -19,7 +22,6 @@ import testimonial15 from "@/assets/testimonial-new-15.png.asset.json";
 import testimonial16 from "@/assets/testimonial-new-16.png.asset.json";
 import testimonial17 from "@/assets/testimonial-new-17.png.asset.json";
 import testimonial18 from "@/assets/testimonial-new-18.png.asset.json";
-
 
 const WHATSAPP_URL = "https://chat.whatsapp.com/Kh9aZcX6IkRE6XYOl8tFf4";
 
@@ -217,144 +219,115 @@ function NumberBadge({ n }: { n: number }) {
 }
 
 const takeaways = [
-  ["לעצור את המריבה באמצע — בלי לשרוט ובלי לוותר על מה שחשוב לך", "שלא תשרטו, אבל עדיין תעבירו את המסר."],
-  ["להבין למה אותה מריבה חוזרת שוב ושוב — דרך עקרון הפדלים", "בלי להתרגש כל כך מתגובות מסוימות של בן או בת הזוג, וללמוד לבחור תגובה אחרת."],
-  ["להציב גבול בלי שזה יהפוך לקרב — בלי צעקות ובלי ויתור שקט", "מתוך כבוד לשניכם, לא מתוך כעס או ויתור."],
-  ["לזהות מה חסר בקשר, ולא רק על מה רבים — עם שיטת המפה הזוגית שיובל פיתח", "לזהות את החוסר שגורם למריבות, ואיפה בדיוק נמצא החיבור."],
+  ["להפחית את עוצמת המריבות ולמנוע את המריבה הבאה.", "לזהות מה מוביל להסלמה, לעצור את המעגל החוזר ולבחור תגובה אחרת לפני שהוויכוח הופך למריבה."],
+  ["להציב גבולות ולשמור על קווים אדומים.", "לדעת לזהות היכן עובר הגבול, איך לבטא אותו בצורה ברורה ואיך לשמור עליו בלי להחריף את העימות."],
+  ["להביע את עצמכם ולהרגיש שמבינים אתכם.", "לדעת להעביר את מה שחשוב לכם, ולהרגיש שבאמת מקשיבים לכם."],
+  ["להפוך מחלוקת להזדמנות להתקדמות ולחיזוק הקשר.", "מתוך הבנה טובה יותר של הצד השני, לא מתוך כעס או ויתור."],
 ];
 
 const topics = [
-  ["האם יש מריבות בריאות?", "המתח הוא חלק טבעי מהזוגיות. נבין למה לא צריך לפחד ממחלוקות, למה חשוב להציב גבולות, ואיך מריבות שלא מטופלות עלולות להצטבר וליצור שבר."],
-  ["עקרון הפדלים", "הזוגיות היא מעגל שבו כל אחד משפיע על השני. לא תמיד השאלה היא מי צודק — אלא איך נוצר המעגל הזה, ואיך אפשר לשנות את התנועה בתוכו."],
-  ["המטרה: לשמוע ולהשמיע", "המריבה אינה תחרות שבה צריך לנצח. נלמד איך לבטא את הצרכים שלנו, ובו בזמן להבין מה בן או בת הזוג באמת מבקשים לומר."],
-  ["רמת המריבה הנכונה", "לא חלשים מדי ולא קיצוניים מדי. איך יודעים מתי להציב קו אדום, מתי להביע עמדה בעוצמה, ומתי לעצור ולבחור דרך אחרת."],
-  ["השיחה שמבארת ומבהירה", "איך עושים את זה בפועל? איך משמיעים, איך מקשיבים, ואיך מנהלים שיחה שאפשר לצאת ממנה עם יותר הבנה ופחות ריחוק."],
+  ["מריבה בריאה או מריבה הרסנית?", "מה ההבדל בין מחלוקת שאפשר לצמוח ממנה לבין מריבה שפוגעת בתקשורת ובקשר?"],
+  ["עקרון הפדלים", "איך התגובות של כל אחד מבני הזוג משפיעות על המשך המריבה, ולמה אנחנו חוזרים שוב לאותו מעגל?"],
+  ["לשמוע ולהשמיע", "איך מביעים צורך ומעבירים מסר בצורה ברורה, ואיך מקשיבים בלי להתגונן?"],
+  ["גבולות וקווים אדומים", "איך מזהים את הגבולות שחשוב לשמור עליהם ואיך מבטאים אותם בלי להחריף את העימות?"],
+  ["השיחה שמבררת ומבהירה", "איך עוברים מוויכוח על מה שקרה לשיחה שמאפשרת להבין מה באמת עומד מאחורי המחלוקת?"],
 ];
 
 const faqs = [
-  ["בן/בת הזוג שלי לא יבוא/תבוא", "מגיעים ביחד? זה כפול. מגיע או מגיעה לבד? זו כבר התחלה אמיתית. גם כשמגיעים לבד אפשר ללמוד לזהות את הדינמיקה הזוגית."],
-  ["זה בזום, זה לא יעזור כמו פגישה פרונטלית", "המפגש מתקיים מהבית, בסביבה הנוחה והמוכרת שלכם, בלי נסיעות."],
-  ["איך אפשר לשאול שאלות? האם ישמעו אותי?", "במהלך המפגש תוכלו לשלוח שאלות בכתב דרך אזור השאלות והתשובות של Zoom. השאלות נשלחות ליובל בלבד, באופן אנונימי, ללא הצגת שמכם למשתתפים האחרים."],
-  ["אין לי זמן, 90 דקות זה הרבה", "זו אחת השעה וחצי המשמעותיות ביותר שתשקיעו החודש בזוגיות שלכם."],
-  ["ניסינו כבר הכול, שום דבר לא עזר", "לפעמים אנחנו מנסים שוב ושוב לפתור את הנושא שעליו אנחנו רבים, אבל לא מזהים את המעגל שחוזר על עצמו."],
-  ["האם המפגש מתאים גם למי שאין לו משבר זוגי?", "בהחלט. המפגש מתאים גם לזוגות שרוצים לחזק את הקשר."],
+  ["מה אם בן או בת הזוג לא רוצים להשתתף?", "בהחלט אפשר להצטרף גם לבד. במהלך המפגש תוכלו ללמוד לזהות את דפוסי התקשורת והתגובות בתוך הקשר, ולקבל כלים שתוכלו להתחיל ליישם בעצמכם. מומלץ להגיע יחד, אבל אין בכך תנאי להשתתפות."],
+  ["האם המפגש מתקיים בזום או פנים אל פנים?", "המפגש מתקיים בשידור חי בזום, כך שתוכלו להשתתף מהבית, בלי צורך להגיע למקום פיזי."],
+  ["האם אפשר לשאול שאלות באופן אנונימי?", "השאלות יועברו בכתב, בהתאם למנגנון השאלות שיופעל במפגש. כך תוכלו להעלות נושא שמעסיק אתכם בלי צורך לדבר מול המשתתפים."],
+  ["האם 90 דקות אינן זמן ארוך מדי?", "90 דקות שמוקדשות להבנת הדרך שבה אתם מנהלים מחלוקות, לזיהוי דפוסים ולהיכרות עם כלים מעשיים. המטרה היא לצאת מהמפגש עם הבנה וכלים שאפשר לקחת לחיי היומיום."],
+  ["מה אם כבר ניסינו הכול?", "לפעמים אנחנו מנסים שוב ושוב לפתור את הנושא שעליו אנחנו רבים, בלי לזהות את הדפוס שמחזיר אותנו לאותה נקודה. במפגש נלמד להתבונן גם על הדרך שבה המריבה מתנהלת, ולא רק על הסיבה שבגללה התחילה."],
+  ["האם המפגש מתאים גם למי שלא נמצא במשבר זוגי?", "בהחלט. המפגש מיועד גם לזוגות שרוצים לשפר את הדרך שבה הם מנהלים מחלוקות, להבין טוב יותר זה את זו ולרכוש כלים לתקשורת בריאה יותר – גם כשאין משבר משמעותי."],
 ];
 
 export function Index({ source }: { source: string }) {
   return (
     <div className="overflow-x-clip">
-      {/* 1. HERO — viewport-tall, one dramatic statement */}
-      <section className="relative isolate flex items-center justify-center overflow-hidden">
-        <img
-          src={heroBg.url}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-x-0 -top-[280px] h-full w-full object-cover object-top"
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(255,251,245,0) 30%, rgba(255,251,245,.92) 54%, var(--brand-cream) 66%)",
-          }}
-        />
-        <div className="relative z-10 mx-auto w-full max-w-3xl px-5 pb-[18px] pt-[12px] text-center sm:pt-[32px]">
-          <img
-            src={yuvalLogo.url}
-            alt="יובל סודאי — פסיכותרפיסט ויועץ זוגי מוסמך"
-            className="mx-auto h-24 w-auto sm:h-28"
-          />
-          <p className="mt-[12px] mb-[18px] inline-block rounded-full border-[3px] border-brand-blue bg-brand-pink/30 px-8 py-4 text-[20px] font-extrabold leading-[1.4] text-brand-blue sm:text-[22px]">
-            יום רביעי 18.11.2026 <span className="text-brand-pink">·</span> 20:30{" "}
-            <span className="text-brand-pink">·</span> בזום, מהבית
-          </p>
-          <p className="mb-[2px] text-balance text-[16px] font-semibold leading-[1.4] text-brand-clay sm:text-[17px]">יובל סודאי מזמין אתכם לשידור יישומי בנושא:</p>
-          <h1 className="font-display-tight mb-[8px] text-[110px] leading-[1.15] sm:text-[160px]">
-            ממריבה{" "}
-            <span className="relative inline-block text-brand-pink">
-              לקרבה
-              <svg
-                viewBox="-4 -3 208 18"
-                preserveAspectRatio="none"
-                className="absolute -bottom-[8px] left-0 h-[12px] w-full"
-                aria-hidden="true"
-              >
-                <path
-                  d="M2 9C40 5 80 2 120 6C150 9 175 5 198 8"
-                  fill="none"
-                  stroke="var(--brand-blue)"
-                  strokeWidth={8}
-                  strokeLinecap="round"
-                  className="animate-draw"
-                />
-              </svg>
-            </span>
-          </h1>
-          <p className="mx-auto mb-[20px] max-w-xl text-balance text-[22px] font-semibold leading-[1.35] sm:mb-[26px] sm:text-[27px]">
-            איך להפוך את הריחוק בבית לחיבור אמיתי?
-          </p>
-          <div className="mx-auto max-w-[650px]">
-            <blockquote className="mx-auto mb-[18px] max-w-[625px] text-[17px] font-normal leading-[1.5] text-foreground sm:text-[19px]">
-              "איך יכול להיות ששניכם רוצים שיהיה טוב בבית, שניכם משתדלים... ובסוף שוב מוצאים את עצמכם באותו ויכוח?"
-            </blockquote>
-            <p className="mb-[20px] text-[16px] font-semibold leading-[1.55] sm:mb-[24px] sm:text-[18px]">
-              ב־90 דקות תלמדו לנהל את הריבים אחרת: להעביר את מה שחשוב לכם בלי לשרוט, ולהקשיב בלי להתגונן. כי כשיודעים לנהל קונפליקט נכון, גם הריבים יכולים להפוך להזדמנות לבנות קשר חזק יותר, עם אמון, קרבה ואהבה עמוקה. תלמדו להבחין בין מריבה בריאה שמקרבת, לבין מריבה שפוגעת — ואיך לשמור על הגבול הזה בכל ויכוח.
-            </p>
+      {/* 1. HERO */}
+      <div className="campaign-hero bg-brand-blue-deep text-center text-on-dark" dir="rtl">
+        <section aria-label="ממריבה לקרבה" className="campaign-hero__visual">
+          <img src={heroConflictDolls.url} alt="שני זוגות לבבות מאוירים: ממריבה ודאגה לקרבה וחיבור" className="campaign-hero__image" fetchPriority="high" />
+          <div className="campaign-hero__badge">
+            <img src={yuvalLogo.url} alt="יובל סודאי — פסיכותרפיסט ויועץ זוגי מוסמך" />
           </div>
-          <div className="flex justify-center">
-            <Button asChild className="h-[56px] w-full max-w-[360px] rounded-full bg-brand-blue px-3 text-[17px] font-bold text-primary-foreground shadow-soft hover:bg-brand-blue-deep hover:shadow-card sm:w-auto sm:px-8 sm:text-[18px]">
-              <a href="#register" onClick={scrollToForm}>שריינו לי מקום בשידור החינמי ←</a>
+          <div className="campaign-hero__light-track" aria-hidden="true"><span className="campaign-hero__light" /></div>
+          <div className="campaign-hero__title-block">
+            <p className="campaign-hero__eyebrow">שידור חינמי בזום</p>
+            <h1 className="campaign-hero__title font-display-tight">
+              ממריבה{" "}
+              <span className="relative inline-block text-brand-pink">
+                לקרבה
+                <svg viewBox="-4 -3 208 18" preserveAspectRatio="none" className="absolute -bottom-2 left-0 h-3 w-full" aria-hidden="true">
+                  <path d="M2 9C40 5 80 2 120 6C150 9 175 5 198 8" fill="none" stroke="var(--brand-cream)" strokeWidth={5} strokeLinecap="round" className="animate-draw" />
+                </svg>
+              </span>
+            </h1>
+          </div>
+        </section>
+
+        {/* 1b. פרטי המפגש וההזמנה להרשמה */}
+        <section className="mx-auto max-w-3xl px-5 pb-12 pt-7 sm:pb-16 sm:pt-9">
+          <h2 className="mx-auto max-w-2xl text-balance text-2xl font-bold leading-snug text-brand-cream sm:text-3xl">
+            איך להפוך מריבה להזדמנות לחיזוק הקשר?
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-on-dark/90 sm:text-lg">
+            שניכם רוצים שיהיה טוב בבית, שניכם משתדלים, ובכל זאת לפעמים ויכוח קטן הופך למריבה ארוכה שמשאירה את שניכם מתוסכלים.
+          </p>
+          <div className="mt-7 rounded-lg border border-on-dark/15 bg-card/7 p-5 sm:p-7">
+            <p className="text-base font-semibold leading-relaxed sm:text-lg">
+              ב-90 דקות תלמדו איך להפחית את עוצמת המריבות ואת המשכן, להציב גבולות, ולשמור על קווים אדומים, להבין ולהעביר מסרים בצורה נכונה.
+            </p>
+            <p className="mt-4 text-base font-semibold leading-relaxed sm:text-lg">
+              כך תוכלו להפוך גם מחלוקת להזדמנות להבנה ולהתקדמות בקשר.
+            </p>
+            <ul className="mt-5 flex flex-wrap justify-center gap-2 border-t border-dashed border-on-dark/20 pt-5 text-sm font-bold sm:text-base">
+              {["יום רביעי 18.11.2026", "20:30", "מפגש חי בזום", "ללא עלות"].map((detail) => (
+                <li key={detail} className="rounded-full bg-muted px-4 py-2 text-brand-blue-deep">{detail}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-7 flex justify-center">
+            <Button asChild className="h-auto min-h-14 w-full max-w-md whitespace-normal rounded-full bg-brand-pink px-5 py-4 text-base font-bold text-brand-blue-deep shadow-soft hover:bg-brand-pink-soft hover:shadow-card sm:w-auto sm:px-10 sm:text-lg">
+              <a href="#register" onClick={scrollToForm}>שריינו לי מקום במפגש ללא עלות ←</a>
             </Button>
           </div>
-          <p className="mx-auto mt-[12px] max-w-xl text-[17px] leading-[30px] text-brand-clay">
-            מגיעים ביחד? זה כפול. מגיע/ה לבד? זו כבר התחלה אמיתית.
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-on-dark/75">
+            מומלץ להגיע יחד, אבל אפשר בהחלט להצטרף גם לבד.
           </p>
-        </div>
-      </section>
-
-      {/* 1b. calm supporting copy that used to live inside the hero */}
-      <section className="px-5 pb-16 text-center">
-        <div className="mx-auto max-w-2xl">
-          <p className="mx-auto inline-block max-w-xl rounded-2xl border border-brand-pink px-5 py-3 font-semibold text-brand-blue">
-            💎 השידור היחיד ששני בני הזוג יכולים להשתתף בו ולתרגל בזמן אמת — בדיסקרטיות מוחלטת!
-          </p>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* 2. הזדהות */}
       <section className="bg-brand-blue px-5 py-20 text-on-dark">
         <div className="mx-auto max-w-5xl">
-          <SectionTitle light>לתת מעצמך — בלי לאבד את עצמך</SectionTitle>
+          <SectionTitle light>שניכם רוצים לפתור את הבעיה. אז למה אתם שוב מוצאים את עצמכם באותה מריבה?</SectionTitle>
           <p className="mx-auto mt-5 max-w-3xl text-center text-lg text-on-dark/85">
-            בכל זוגיות יש "שלי" ו"שלך" — השאלה היא איפה עובר הגבול ביניהם, ומי קובע אותו. שני
-            אנשים אוהבים, שני אנשים שרוצים בטובת הקשר, אבל לפעמים כל אחד מהם חווה את המציאות
-            הזוגית בצורה שונה לחלוטין.
+            זה יכול להתחיל ממשהו קטן: משפט שנאמר בטון לא נכון, בקשה שלא נענתה או שיחה שרציתם לסיים בטוב. אבל מהר מאוד כל אחד מגיב אחרת, המתח עולה, ושוב אתם מוצאים את עצמכם באותו מעגל מוכר.
           </p>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {[
               {
-                tag: "הצד שלה",
                 bg: "bg-brand-pink-soft",
-                title: "מה קורה כשהוא לא רואה אותך?",
+                title: "כשאחד רוצה לדבר עכשיו",
                 items: [
-                  "את מדברת, והוא כאילו לא שומע — שוב ושוב",
-                  "מרגישה רחוקה ממנו גם כשאתם באותו חדר",
-                  'כל שיחה נגמרת בתחושה שאת "הבעיה"',
+                  "חשוב לו לפתור את העניין כאן ועכשיו, ולכן הוא ממשיך להסביר ולשאול.",
+                  "ככל שהוא מנסה להתקרב ולברר, הצד השני דווקא נסגר ומתרחק.",
+                  "בסוף שניהם מתוסכלים: אחד מרגיש שלא מקשיבים לו, והשני מרגיש שלא נותנים לו רגע לנשום.",
                 ],
               },
               {
-                tag: "הצד שלו",
-                bg: "bg-brand-sky-soft",
-                title: "מה קורה כשהוא מרגיש שכל הזמן דורשים ממנו?",
+                bg: "bg-brand-cream",
+                title: "כשכל אחד מנסה להסביר את עצמו",
                 items: [
-                  "מה שלא תעשה, זה אף פעם לא מספיק",
-                  "אתה נותן ונותן — ומרגיש שזה לא נחשב",
-                  "כל שיחה הופכת לרשימה של מה עשית לא נכון",
+                  "אחד מסביר למה התכוון, אבל השני עדיין פגוע ממה ששמע.",
+                  "השיחה עוברת ממה שקרה עכשיו לכל הדברים שהצטברו במשך הזמן.",
+                  "במקום להבין אחד את השני, כל אחד עסוק בלהוכיח למה הוא צודק.",
                 ],
               },
             ].map((c) => (
-              <div key={c.tag} className={`rounded-3xl p-7 text-brand-ink shadow-card ${c.bg}`}>
-                <span className="text-sm font-bold text-brand-clay">{c.tag}</span>
+              <div key={c.title} className={`rounded-3xl p-7 text-brand-ink shadow-card ${c.bg}`}>
                 <h3 className="mt-1 text-2xl font-extrabold">{c.title}</h3>
                 <ul className="mt-4 space-y-3">
                   {c.items.map((i) => (
@@ -368,11 +341,10 @@ export function Index({ source }: { source: string }) {
             ))}
           </div>
           <p className="mx-auto mt-10 max-w-3xl text-center text-xl font-semibold">
-            שני הצדדים צודקים, ושניכם תקועים באותו מעגל — וזה לא אומר שמשהו שבור, רק שיש משהו אחד
-            שעדיין לא הבנתם.
+            שניכם אולי מנסים להגיע לפתרון, אבל הדרך שבה אתם מגיבים זה לזה מחזירה אתכם שוב לאותו מקום. כשמבינים את המעגל הזה, אפשר להתחיל לשנות את הדרך שבה מנהלים את המחלוקת.
           </p>
           <div className="mt-8 text-center">
-            <CTA variant="pink">כן, אני רוצה מקום בשידור החינמי! ←</CTA>
+            <CTA variant="pink">שריינו לי מקום במפגש ללא עלות ←</CTA>
           </div>
         </div>
       </section>
@@ -382,34 +354,79 @@ export function Index({ source }: { source: string }) {
         <div className="mx-auto max-w-4xl rounded-[32px] bg-brand-blue px-6 py-14 text-center text-on-dark shadow-card sm:px-14">
           <Flower size={40} variant="light" className="mx-auto" />
           <h2 className="font-display-tight mt-3 text-5xl text-on-dark sm:text-6xl">
-            בדיוק בשביל זה בנינו את המפגש הזה
+            כדי לנהל מריבה אחרת, צריך להבין קודם מה באמת קורה בתוכה.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-on-dark/90">
-            יובל ייקח אתכם צעד אחר צעד אל השורש האמיתי של החיכוכים החוזרים — ויראה
-            לכם בדיוק איפה עובר הגבול הבריא בין מה ששייך לך, מה ששייך לבן או בת הזוג, ומה ששייך
-            ל"ממלכה המשותפת" שלכם. לא עוד תיאוריה —{" "}
-            <strong className="text-brand-pink">שיטה שאפשר להתחיל להשתמש בה כבר במריבה הבאה.</strong>
+            מריבה היא לא רק חילוקי דעות. הדרך שבה אנחנו מגיבים, מקשיבים ומעבירים מסרים משפיעה על האופן שבו היא מתפתחת ועל המקום שבו היא מסתיימת.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-on-dark/90">
+            במפגש יובל יכיר לכם חמישה נושאים מרכזיים שיעזרו לכם להבין את דינמיקת המריבה וללמוד איך לנהל אותה אחרת.
+          </p>
+          <ul className="mx-auto mt-10 flex max-w-3xl flex-wrap justify-center gap-3">
+            {topics.map(([title]) => (
+              <li key={title} className="rounded-full border border-on-dark/20 bg-on-dark/10 px-4 py-2 text-on-dark shadow-soft">
+                {title}
+              </li>
+            ))}
+          </ul>
+          <p className="mx-auto mt-10 max-w-2xl text-lg text-on-dark/90">
+            כאשר מבינים את הדינמיקה שמניעה את המריבה, אפשר להתחיל לנהל אותה אחרת.
           </p>
           <div className="mt-8">
-            <CTA variant="pink">כן, אני רוצה מקום בשידור החינמי! ←</CTA>
+            <CTA variant="pink">שריינו לי מקום במפגש ללא עלות ←</CTA>
           </div>
         </div>
       </section>
 
       {/* 4. ארבעה דברים */}
-      <section className="bg-muted px-5 py-20">
+      <section className="bg-brand-cream px-5 py-20">
         <div className="mx-auto max-w-5xl">
           <SectionTitle>ארבעה דברים שתיקחו איתכם כבר באותו ערב</SectionTitle>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2">
-            {takeaways.map(([t, d], i) => (
-              <div key={t} className="flex gap-5 rounded-3xl bg-card p-6 shadow-soft">
-                <NumberBadge n={i + 1} />
-                <div>
-                  <h3 className="text-xl font-extrabold">{t}</h3>
-                  <p className="mt-1">{d}</p>
+          <div className="mt-12">
+            <div className="mb-5 flex items-center gap-3 text-brand-blue-deep">
+              <svg aria-hidden="true" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="size-8 shrink-0">
+                <path d="M5 7h6M5 13h10M5 19h14M23 5v22m-5-5 5 5 5-5" />
+              </svg>
+              <h3 className="text-lg font-bold">קודם: מורידים עוצמה</h3>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {takeaways.slice(0, 2).map(([t, d], i) => (
+                <BorderGlow key={t} glowColor="236 45% 44%" colors={['#3F5B6E', '#F5B8B8', '#2F4555']} backgroundColor="#2F4555" borderRadius={16} glowRadius={24} edgeSensitivity={40}>
+                <article key={t} className="flex gap-4 rounded-lg border-s-4 border-brand-pink bg-brand-blue-deep p-5 text-on-dark sm:p-6">
+                  <span className="shrink-0 text-2xl font-light tabular-nums text-brand-pink" aria-hidden="true">0{i + 1}</span>
+                  <div className="min-w-0">
+                    <h3 className="text-xl font-extrabold leading-snug text-on-dark">{t}</h3>
+                    <p className="mt-2 text-on-dark/90">{d}</p>
+                  </div>
+                </article>
+                </BorderGlow>
+              ))}
+            </div>
+            <div aria-hidden="true" className="flex h-20 items-center justify-center text-brand-blue/50 sm:h-24">
+              <svg viewBox="0 0 32 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-12 w-8">
+                <path d="M16 2v36m-7-7 7 7 7-7" />
+              </svg>
+            </div>
+            <div className="mb-6 flex items-center gap-3 text-brand-blue">
+              <svg aria-hidden="true" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="size-8 shrink-0">
+                <path d="M4 6h16v12h-7l-6 5v-5H4V6M24 11h4v13h-4v4l-6-4h-5M11 11h3M7 14h9" />
+              </svg>
+              <h3 className="text-lg font-bold">אחר כך: בונים מזה משהו טוב</h3>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 sm:gap-8">
+              {takeaways.slice(2).map(([t, d], i) => (
+                <BorderGlow key={t} glowColor="236 45% 44%" colors={['#3F5B6E', '#F5B8B8', '#2F4555']} backgroundColor="#FFFBF5" borderRadius={16} glowRadius={24} edgeSensitivity={40}>
+                <article key={t} className="rounded-lg border border-brand-pink bg-brand-pink-soft p-7 sm:p-8">
+                  <div className="mb-5 flex items-center gap-3">
+                    <span className="text-2xl font-light tabular-nums text-brand-blue" aria-hidden="true">0{i + 3}</span>
+                    <span className="h-px flex-1 bg-brand-pink" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-xl font-extrabold leading-snug text-brand-blue">{t}</h3>
+                  <p className="mt-3 text-brand-ink">{d}</p>
+                </article>
+                </BorderGlow>
+              ))}
                 </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -417,30 +434,48 @@ export function Index({ source }: { source: string }) {
       {/* 5. איך לנהל אחרת */}
       <section className="px-5 py-20">
         <div className="mx-auto max-w-4xl">
-          <SectionTitle>לא רק על מה אתם רבים, אלא איך לנהל את זה אחרת</SectionTitle>
-          <div className="mt-12 space-y-5">
+          <SectionTitle>מה נלמד במפגש?</SectionTitle>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-brand-blue">
+            נבין מה קורה בזמן קונפליקט, ונכיר כלים מעשיים לניהול שיחה אחרת.
+          </p>
+          <ol className="relative mx-auto mt-12 max-w-3xl before:absolute before:inset-y-6 before:right-8 before:w-px before:bg-brand-pink sm:before:right-10">
             {topics.map(([t, d], i) => (
-              <div key={t} className="flex gap-5 rounded-3xl border border-border bg-card p-6 shadow-soft">
-                <NumberBadge n={i + 1} />
-                <div>
-                  <h3 className="text-xl font-extrabold">{t}</h3>
-                  <p className="mt-1">{d}</p>
+              <li key={t} className="relative grid grid-cols-[4rem_minmax(0,1fr)] gap-x-4 pb-10 last:pb-0 sm:grid-cols-[5rem_minmax(0,1fr)] sm:gap-x-7 sm:pb-12">
+                <div className="relative z-10 self-start bg-background py-2 text-center text-4xl font-light tabular-nums leading-none text-brand-blue sm:text-5xl">
+                  <span className="sr-only">שלב </span>{String(i + 1).padStart(2, "0")}
                 </div>
-              </div>
+                <div className="min-w-0 border-b border-brand-blue/15 pb-8 group-last:border-0">
+                  <svg aria-hidden="true" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mb-3 size-8 text-brand-blue">
+                    <path d={[
+                      "M5 24 12 17 19 21 27 8 M20 8h7v7",
+                      "M25 12a10 10 0 0 0-18-2 M7 5v5h5 M7 20a10 10 0 0 0 18 2 M25 27v-5h-5",
+                      "M4 7h17v12H11l-5 4v-4H4V7 M24 12h4v12h-3v4l-5-4h-5",
+                      "M8 5v22 M24 5v22 M13 16h6 M16 13v6",
+                      "M5 6h22v15H15l-7 6v-6H5V6 M10 11h12 M10 16h8",
+                    ][i]} />
+                  </svg>
+                  <h3 className="text-xl font-extrabold leading-snug text-brand-blue sm:text-2xl">{t}</h3>
+                  <p className="mt-3 max-w-xl text-lg leading-relaxed">{d}</p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
       {/* 6. יובל */}
       <section className="bg-muted px-5 py-20">
-        <div className="mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-[1fr_1.4fr]">
+        <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-[1fr_1.2fr] md:gap-12">
           <div className="text-center">
-            <div className="organic-frame mx-auto flex aspect-square w-64 items-center justify-center overflow-hidden border-[10px] border-card bg-input shadow-card sm:w-80">
+            <div className="organic-frame mx-auto flex aspect-square w-full max-w-96 items-center justify-center overflow-hidden border-[10px] border-card bg-input shadow-card">
               <img src={yuvalPhoto.url} alt="יובל סודאי מוסר סדנה" className="h-full w-full object-cover" />
             </div>
-            <ul className="mt-6 flex flex-wrap justify-center gap-2">
-              {["CBT", "IFS", "EFT", "המפה הזוגית", "16 שנות ניסיון"].map((c) => (
+            <div className="mx-auto mt-7 flex w-fit items-center gap-4 text-brand-blue">
+              <span className="text-7xl font-light tabular-nums leading-none">16</span>
+              <span className="border-s-2 border-brand-pink ps-4 text-xl font-bold">שנות ניסיון</span>
+            </div>
+            <ul className="mt-5 flex flex-wrap justify-center gap-2">
+              {["CBT", "IFS", "EFT", "המפה הזוגית"].map((c) => (
                 <li key={c} className="rounded-full bg-brand-sage px-3.5 py-1 text-sm font-bold text-brand-blue">
                   {c}
                 </li>
@@ -448,22 +483,23 @@ export function Index({ source }: { source: string }) {
             </ul>
           </div>
           <div>
-            <Eyebrow>פסיכותרפיסט (CBT, IFS) ומטפל זוגי מוסמך (EFT, המפה הזוגית)</Eyebrow>
-            <h2 className="font-display-tight text-5xl sm:text-6xl">יובל ושיטת המפה הזוגית</h2>
+            <h2 className="font-display-tight text-5xl sm:text-6xl">16 שנה של הבנת מה באמת קורה בין בני זוג – ומה אפשר לעשות אחרת</h2>
             <div className="mt-5 space-y-4 text-lg">
-              <h3 className="text-xl font-extrabold">16 שנות ניסיון בהבנת מה שבאמת קורה בין בני זוג</h3>
               <p>
-                יובל סודאי מלווה זוגות כבר 16 שנה, ומתמחה בזיהוי שורש הקושי הזוגי – לא רק במה שרואים על פני השטח, אלא במה שבאמת מניע את הדברים.
+                יובל סודאי הוא פסיכותרפיסט ויועץ זוגי מוסמך, המלווה זוגות כבר 16 שנה.
               </p>
               <p>
-                במהלך השנים, בעבודה עם מאות זוגות בקליניקה, בסדנאות ובייעוץ זוגי, יובל זיהה שוב ושוב כיצד זוגות שונים מתמודדים עם דפוסים דומים: אותם חיכוכים, אותן אי-הבנות ואותם מעגלים שחוזרים על עצמם, גם כששני בני הזוג באמת רוצים בטובתו של הקשר.
+                לאורך השנים ליווה מאות זוגות וסייע להם להבין את הדפוסים שמנהלים את השיחות, את נקודות החיכוך ואת מה שמסתתר לעיתים מאחורי הוויכוח הגלוי.
               </p>
               <p>
-                מתוך הניסיון הזה נולדה שיטת המפה הזוגית – דרך מובנית להבין מה מתרחש מתחת לפני השטח בקשר, לזהות את הדפוסים שמעצבים אותו ולגלות מה יכול לעזור לשני בני הזוג להתקרב ולהבין זה את זו טוב יותר.
+                הגישה המקצועית של יובל מתמקדת לא רק במה שקורה בין בני הזוג, אלא גם בשאלה למה זה קורה – ואיך אפשר ליצור דרך אחרת להתמודדות.
+              </p>
+              <p>
+                מתוך הניסיון המקצועי הזה פיתח את שיטת 'המפה הזוגית', שמסייעת להבין את המרחב האישי והמשותף בתוך הקשר.
               </p>
             </div>
             <div className="mt-8">
-              <CTA>כן, אני רוצה מקום בשידור החינמי! ←</CTA>
+              <CTA>שריינו לי מקום במפגש ללא עלות ←</CTA>
             </div>
           </div>
         </div>
@@ -473,17 +509,29 @@ export function Index({ source }: { source: string }) {
       <section className="px-5 py-20">
         <div className="mx-auto max-w-5xl">
           <SectionTitle>עומק מקצועי, הסברים בהירים ותובנות שנשארות</SectionTitle>
-          <TestimonialsGallery />
+          <ChromaGrid
+            items={TESTIMONIALS.map((t, i) => ({
+              image: t.url,
+              accent: i % 2 === 0 ? "#3F5B6E" : "#F5B8B8",
+              alt: `צילום מסך עדות ${i + 1} על יובל סודאי`,
+            }))}
+            theme="light"
+            columns={3}
+            aspectRatio="860 / 1013"
+            showInfo={false}
+            reveal="spotlight"
+            className="mt-10 md:mt-12"
+          />
           <div className="mt-10 text-center">
-            <CTA>כן, אני רוצה מקום בשידור החינמי! ←</CTA>
+            <CTA>שריינו לי מקום במפגש ללא עלות ←</CTA>
           </div>
         </div>
       </section>
 
       {/* 8. מתנה */}
       <section className="px-5 pb-20">
-        <div className="bg-gift mx-auto grid max-w-5xl items-center gap-12 overflow-hidden rounded-[32px] px-6 py-14 text-on-dark shadow-card sm:px-12 md:grid-cols-[auto_1fr]">
-          <div className="relative mx-auto w-56 sm:w-64">
+        <div className="bg-gift mx-auto grid max-w-5xl items-center gap-12 overflow-hidden rounded-[32px] px-6 py-14 text-on-dark shadow-card sm:px-12 md:grid-cols-[1fr_1.3fr]">
+          <div className="relative mx-auto w-full max-w-72 md:max-w-80">
             <div className="absolute inset-0 translate-x-3 translate-y-3 rotate-[2deg] rounded-2xl bg-on-dark/20" />
             <div className="absolute inset-0 translate-x-1.5 translate-y-1.5 rotate-[0deg] rounded-2xl bg-on-dark/35" />
             <div className="relative flex aspect-[3/4] -rotate-[2.5deg] flex-col items-center justify-between rounded-2xl bg-brand-blue-deep p-6 text-center shadow-card ring-1 ring-on-dark/20">
@@ -491,22 +539,31 @@ export function Index({ source }: { source: string }) {
               <div>
                 <p className="text-xs font-bold tracking-widest text-on-dark/70">מדריך אישי</p>
                 <p className="font-display-tight text-[6rem] leading-none text-brand-pink">5</p>
-                <p className="text-lg font-extrabold leading-snug text-on-dark">השאלות שיחזירו אותך לעצמך</p>
+                <p className="text-lg font-extrabold leading-snug text-on-dark">תובנות וכלים מעשיים</p>
               </div>
               <p className="text-xs text-on-dark/70">מאת יובל סודאי</p>
             </div>
           </div>
           <div className="text-center md:text-right">
-            <p className="font-bold text-brand-pink">🎁 מתנה למשתתפים שנשארים עד סוף המפגש</p>
-            <h2 className="font-display-tight mt-3 text-5xl text-on-dark sm:text-6xl">
-              מדריך "5 השאלות שיחזירו אותך לעצמך"
+            <h2 className="font-display-tight text-5xl text-on-dark sm:text-6xl">
+              מתנה למי שיישאר איתנו עד סוף המפגש
             </h2>
+            <h3 className="mt-6 text-2xl font-bold leading-snug text-brand-pink">
+              מדריך מתנה מאת יובל סודאי
+            </h3>
+            <div aria-hidden="true" className="mt-6 flex items-center justify-center gap-4 md:justify-start">
+              <span className="text-5xl font-light tabular-nums leading-none text-brand-pink">5</span>
+              <div className="flex gap-1.5 border-b border-brand-pink/40 pb-2">
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <span key={n} className="h-5 w-1.5 rounded-sm bg-brand-pink/70" />
+                ))}
+              </div>
+            </div>
             <p className="mt-5 text-lg text-on-dark/90">
-              כלי עבודה אישי שיובל משתמש בו עם לקוחות פרטיים. מדריך שנכתב בעריכה אישית של יובל, עם
-              5 שאלות מדויקות שמחזירות בהירות בתוך הזוגיות — אותו תהליך שיובל מלמד בפגישות אישיות.
+              תובנות וכלים מעשיים מעולמו המקצועי של יובל, שיאפשרו לכם להמשיך לקחת איתכם מהמפגש גם לאחר סיומו.
             </p>
-            <p className="mt-5 inline-block rounded-full border border-on-dark/30 px-4 py-1.5 text-sm font-semibold">
-              במתנה — ללא עלות · רק למי שצופה במפגש המלא עד הסוף
+            <p className="mt-6 border-t border-on-dark/20 pt-5 text-base font-semibold text-on-dark">
+              המדריך יוענק למשתתפים שיישארו עד סוף המפגש.
             </p>
           </div>
         </div>
@@ -518,12 +575,12 @@ export function Index({ source }: { source: string }) {
           <SectionTitle>שאלות שעולות לפני שנרשמים</SectionTitle>
           <div className="mt-10 space-y-3">
             {faqs.map(([q, a]) => (
-              <details key={q} className="group rounded-2xl bg-card px-6 py-4 shadow-soft">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-bold text-brand-blue">
+              <details key={q} className="group rounded-2xl bg-card px-5 py-4 shadow-soft [interpolate-size:allow-keywords] [&::details-content]:h-0 [&::details-content]:overflow-hidden [&::details-content]:opacity-0 [&::details-content]:transition-[height,opacity,content-visibility] [&::details-content]:duration-300 [&::details-content]:ease-in-out [&::details-content]:[transition-behavior:allow-discrete] [&[open]::details-content]:h-auto [&[open]::details-content]:opacity-100 motion-reduce:[&::details-content]:transition-none sm:px-6">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-sm text-lg font-bold leading-snug text-brand-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring">
                   {q}
-                  <span className="text-2xl transition-transform group-open:rotate-45">+</span>
+                  <span aria-hidden="true" className="flex size-7 shrink-0 items-center justify-center text-2xl transition-transform duration-300 group-open:rotate-45 motion-reduce:transition-none">+</span>
                 </summary>
-                <p className="mt-3">{a}</p>
+                <p className="pt-4 leading-relaxed">{a}</p>
               </details>
             ))}
           </div>
@@ -534,16 +591,22 @@ export function Index({ source }: { source: string }) {
       <section className="px-5 py-20">
         <div className="mx-auto max-w-4xl rounded-[32px] bg-brand-blue px-6 py-14 text-center text-on-dark shadow-card">
           <h2 className="font-display-tight text-5xl text-on-dark sm:text-6xl">
-            הקשר שלכם ראוי לעוד אהבה וחמימות
+            מוכנים ללמוד לנהל את המריבות אחרת?
           </h2>
           <p className="mt-4 text-lg text-on-dark/90">
-            השאירו פרטים עכשיו, ותקבלו קישור אישי ותזכורת לפני המפגש.
+            הצטרפו למפגש החי עם יובל סודאי, וקבלו כלים מעשיים להבנת דפוסי המריבה, להצבת גבולות ולהעברת מסרים בצורה נכונה.
           </p>
           <div className="mt-7">
-            <MeetingPills dark />
+            <ul className="flex flex-col items-center gap-2.5 text-[0.95rem] font-semibold">
+              {["יום רביעי | ח' כסלו | 18.11.2026", "20:30 | שידור חי בזום | ללא עלות"].map((t) => (
+                <li key={t} className="rounded-full border border-on-dark/20 bg-on-dark/10 px-4 py-2 text-on-dark shadow-soft">
+                  {t}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="mt-8">
-            <CTA variant="pink">כן, אני רוצה מקום בשידור החינמי! ←</CTA>
+            <CTA variant="pink">שריינו לי מקום במפגש ללא עלות ←</CTA>
           </div>
         </div>
       </section>
@@ -571,31 +634,17 @@ export function Index({ source }: { source: string }) {
             </a>
             <p className="mt-2">© כל הזכויות שמורות</p>
             <hr className="mx-auto my-4 w-24 border-border" />
-            <p>Tovi Kablan - אסטרטגיה, ניהול קמפיין, עיצוב ופיתוח</p>
+            <a
+              href="https://tovikablan.co.il"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-4 hover:underline"
+            >
+              Tovi Kablan - אסטרטגיה, ניהול קמפיין, עיצוב ופיתוח
+            </a>
           </div>
         </div>
       </section>
-
-      {/* 12. קהילה */}
-      <section className="bg-brand-sage px-5 py-14">
-        <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-6 text-center md:flex-row md:text-right">
-          <div>
-            <h2 className="text-2xl font-extrabold">רוצים גם קהילה, לא רק מפגש אחד?</h2>
-            <p className="mt-1">מצטרפים לקבוצת הוואטסאפ של יובל — תכנים ועדכונים שוטפים.</p>
-          </div>
-          <a
-            href={WHATSAPP_URL}
-            className="btn-pill shrink-0 border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-primary-foreground"
-          >
-            להצטרפות לקבוצה ←
-          </a>
-        </div>
-      </section>
-
-      {/* 13. פוטר */}
-      <footer className="px-5 pb-32 pt-8 text-center text-sm text-brand-clay">
-        © יובל סודאי — פסיכותרפיה, ייעוץ זוגי ושיטת המפה הזוגית · עיצוב ובניית הדף: טובי קבלן
-      </footer>
 
       {/* 14. וואטסאפ צף — שמאל */}
       <a
