@@ -24,3 +24,10 @@ const directory = template.replace(/<script type="module"[^>]*><\/script>/g, "")
   .replace(/<noscript>.*?<\/noscript>/, "");
 await writeFile("dist/index.html", directory);
 await writeFile("dist/.nojekyll", "");
+
+const aliases = {"nava": "influencer-nava", "yuval": "email-yuval-internal", "shvirega": "influencer-shevi", "status": "whatsapp-status", "group": "whatsapp-group", "personal": "personal-circles"};
+for (const [alias, canonical] of Object.entries(aliases)) {
+  await mkdir("dist/" + alias + "/thank-you", {recursive:true});
+  await writeFile("dist/" + alias + "/index.html", await readFile("dist/" + canonical + "/index.html", "utf8"));
+  await writeFile("dist/" + alias + "/thank-you/index.html", await readFile("dist/" + canonical + "/thank-you/index.html", "utf8"));
+}

@@ -1,10 +1,33 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import yuvalLogo from "@/assets/yuval-logo.png.asset.json";
 
-const ZOOM_REGISTER_URL = "https://us06web.zoom.us/webinar/register/WN_yGDggiizS7S9jJhc3S7GwA";
-const WHATSAPP_URL = "https://chat.whatsapp.com/Kh9aZcX6IkRE6XYOl8tFf4?s=cl&p=a&iam=2";
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
+  }
+}
+
+const WHATSAPP_URL = "https://chat.whatsapp.com/Kh9aZcX6IkRE6XYOl8tFf4";
 
 export function ThankYou() {
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "page_view", {
+        page_location: window.location.href,
+        page_title: document.title,
+        page_path: "/thank-you",
+      });
+      window.gtag("event", "generate_lead", {
+        event_category: "webinar_registration",
+        event_label: "ממריבה לקרבה",
+      });
+    }
+    // TODO: כשיהיה Google Ads Conversion ID + Label (AW-XXXXXXX/XXXXXXXXXXX),
+    // להוסיף כאן עוד קריאה: gtag('event', 'conversion', { send_to: 'AW-XXXXXXX/XXXXXXXXXXX' });
+  }, []);
+
   return (
     <main className="flex min-h-svh flex-col bg-background">
       <header className="border-b border-border px-6 py-5">
@@ -24,21 +47,26 @@ export function ThankYou() {
         />
         <h1 className="font-display-tight text-5xl sm:text-7xl">איזה יופי שנרשמתם! 🎉</h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
-          קיבלנו את הפרטים שלכם. לחצו למטה כדי להשלים את ההרשמה בזום. אפשר גם להצטרף לקבוצת הוואטסאפ שלנו.
+          קיבלנו את הפרטים שלכם למפגש ביום רביעי 25.11.2026 בשעה 20:30. קישור ההרשמה לזום יפורסם בהמשך.
         </p>
         <ul className="mt-8 flex flex-wrap justify-center gap-2.5 text-[0.95rem] font-semibold">
-          {["📅 יום רביעי | 18.11.2026 (ח׳ כסלו)", "🕣 בשעה 20:30", "💻 בזום, מהבית"].map((detail) => (
+          {["📅 יום רביעי | 25.11.2026 (ט״ו כסלו)", "🕣 בשעה 20:30", "💻 בזום, מהבית"].map((detail) => (
             <li key={detail} className="rounded-full border border-border bg-card px-4 py-2 text-brand-blue shadow-soft">
               {detail}
             </li>
           ))}
         </ul>
-        <p className="mt-10 max-w-xl text-base font-semibold leading-relaxed text-brand-blue sm:text-lg">
-          עוד צעד קטן אחד: השלימו הרשמה קצרה אצל זום (שם ומייל) ותקבלו מיד את קישור הכניסה האישי שלכם למפגש.
-        </p>
-        <Button asChild className="btn-pill mt-4 h-auto max-w-full whitespace-normal bg-brand-blue px-10 py-5 text-lg text-primary-foreground shadow-card hover:bg-brand-blue-deep">
-          <a href={ZOOM_REGISTER_URL} target="_blank" rel="noopener noreferrer">
-            להשלמת ההרשמה וקבלת קישור כניסה אישי ←
+        <div className="mt-10 w-full max-w-xl rounded-2xl border border-border bg-card px-6 py-7 text-center shadow-soft">
+          <p className="text-lg font-bold leading-relaxed text-brand-blue sm:text-xl">
+            קישור הכניסה האישי שלך יישלח אליך בוואטסאפ ובמייל
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-brand-clay sm:text-base">
+            אין צורך לעשות שום דבר נוסף כרגע.
+          </p>
+        </div>
+        <Button asChild className="btn-pill mt-4 h-auto max-w-full whitespace-normal bg-brand-pink text-brand-blue shadow-soft hover:bg-brand-pink hover:shadow-card">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+            הצטרפו לקבוצת הוואטסאפ של יובל ←
           </a>
         </Button>
         {/* WhatsApp — הכפתור הראשי בשורה: solid ובולט, מעל הקישורים המשניים */}
@@ -47,7 +75,7 @@ export function ThankYou() {
           className="btn-pill mt-8 h-auto w-full max-w-md whitespace-normal bg-whatsapp-deep px-8 py-5 text-lg font-bold text-on-dark shadow-card hover:brightness-95"
         >
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-            הצטרפו לקבוצת הוואטסאפ שלנו ←
+            הצטרפו לקבוצת הוואטסאפ ←
           </a>
         </Button>
         {/* קישורים משניים — outline, פחות בולטים */}

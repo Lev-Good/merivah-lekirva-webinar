@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import yuvalPhoto from "@/assets/yuval-workshop.jpeg.asset.json";
 import heroConflictDolls from "@/assets/hero-conflict-dolls.png.asset.json";
 import "@/components/landing/Hero.css";
+import "@/components/landing/FloatingControls.css";
 import yuvalLogo from "@/assets/yuval-logo.png.asset.json";
 import testimonial7 from "@/assets/testimonial-new-7.png.asset.json";
 import testimonial8 from "@/assets/testimonial-new-8.png.asset.json";
@@ -184,7 +185,7 @@ function MeetingPills({ dark = false }: { dark?: boolean }) {
     : "bg-brand-blue text-on-dark border-brand-blue";
   return (
     <ul className="flex flex-wrap justify-center gap-2.5 text-[0.95rem] font-semibold">
-      {["📅 יום רביעי | 18.11.2026 (ח׳ כסלו)", "🕣 בשעה 20:30", "💻 בזום, מהבית"].map((t) => (
+      {["📅 יום רביעי | 25.11.2026 (ט״ו כסלו)", "🕣 בשעה 20:30", "💻 בזום, מהבית"].map((t) => (
         <li key={t} className={`rounded-full border px-4 py-2 shadow-soft ${cls}`}>
           {t}
         </li>
@@ -237,14 +238,16 @@ const faqs = [
   ["מה אם בן או בת הזוג לא רוצים להשתתף?", "בהחלט אפשר להצטרף גם לבד. במהלך המפגש תוכלו ללמוד לזהות את דפוסי התקשורת והתגובות בתוך הקשר, ולקבל כלים שתוכלו להתחיל ליישם בעצמכם. מומלץ להגיע יחד, אבל אין בכך תנאי להשתתפות."],
   ["האם המפגש מתקיים בזום או פנים אל פנים?", "המפגש מתקיים בשידור חי בזום, כך שתוכלו להשתתף מהבית, בלי צורך להגיע למקום פיזי."],
   ["האם אפשר לשאול שאלות באופן אנונימי?", "השאלות יועברו בכתב, בהתאם למנגנון השאלות שיופעל במפגש. כך תוכלו להעלות נושא שמעסיק אתכם בלי צורך לדבר מול המשתתפים."],
-  ["האם 90 דקות אינן זמן ארוך מדי?", "90 דקות שמוקדשות להבנת הדרך שבה אתם מנהלים מחלוקות, לזיהוי דפוסים ולהיכרות עם כלים מעשיים. המטרה היא לצאת מהמפגש עם הבנה וכלים שאפשר לקחת לחיי היומיום."],
+  ["האם 60 דקות אינן זמן ארוך מדי?", "60 דקות שמוקדשות להבנת הדרך שבה אתם מנהלים מחלוקות, לזיהוי דפוסים ולהיכרות עם כלים מעשיים. המטרה היא לצאת מהמפגש עם הבנה וכלים שאפשר לקחת לחיי היומיום."],
   ["מה אם כבר ניסינו הכול?", "לפעמים אנחנו מנסים שוב ושוב לפתור את הנושא שעליו אנחנו רבים, בלי לזהות את הדפוס שמחזיר אותנו לאותה נקודה. במפגש נלמד להתבונן גם על הדרך שבה המריבה מתנהלת, ולא רק על הסיבה שבגללה התחילה."],
   ["האם המפגש מתאים גם למי שלא נמצא במשבר זוגי?", "בהחלט. המפגש מיועד גם לזוגות שרוצים לשפר את הדרך שבה הם מנהלים מחלוקות, להבין טוב יותר זה את זו ולרכוש כלים לתקשורת בריאה יותר – גם כשאין משבר משמעותי."],
 ];
 
 export function Index({ source }: { source: string }) {
+
   return (
-    <div className="overflow-x-clip">
+    <div className="campaign-page overflow-x-clip">
+      <div className="campaign-page__content">
       {/* 1. HERO */}
       <div className="campaign-hero bg-brand-blue-deep text-center text-on-dark" dir="rtl">
         <section aria-label="ממריבה לקרבה" className="campaign-hero__visual">
@@ -277,13 +280,13 @@ export function Index({ source }: { source: string }) {
           </p>
           <div className="mt-7 rounded-lg border border-on-dark/15 bg-card/7 p-5 sm:p-7">
             <p className="text-base font-semibold leading-relaxed sm:text-lg">
-              ב-90 דקות תלמדו איך להפחית את עוצמת המריבות ואת המשכן, להציב גבולות, ולשמור על קווים אדומים, להבין ולהעביר מסרים בצורה נכונה.
+              ב-60 דקות תלמדו איך להפחית את עוצמת המריבות ואת המשכן, להציב גבולות, ולשמור על קווים אדומים, להבין ולהעביר מסרים בצורה נכונה.
             </p>
             <p className="mt-4 text-base font-semibold leading-relaxed sm:text-lg">
               כך תוכלו להפוך גם מחלוקת להזדמנות להבנה ולהתקדמות בקשר.
             </p>
             <ul className="mt-5 flex flex-wrap justify-center gap-2 border-t border-dashed border-on-dark/20 pt-5 text-sm font-bold sm:text-base">
-              {["יום רביעי 18.11.2026", "20:30", "מפגש חי בזום", "ללא עלות"].map((detail) => (
+              {["יום רביעי 25.11.2026", "20:30", "מפגש חי בזום", "ללא עלות"].map((detail) => (
                 <li key={detail} className="rounded-full bg-muted px-4 py-2 text-brand-blue-deep">{detail}</li>
               ))}
             </ul>
@@ -534,31 +537,39 @@ export function Index({ source }: { source: string }) {
           <div className="relative mx-auto w-full max-w-72 md:max-w-80">
             <div className="absolute inset-0 translate-x-3 translate-y-3 rotate-[2deg] rounded-2xl bg-on-dark/20" />
             <div className="absolute inset-0 translate-x-1.5 translate-y-1.5 rotate-[0deg] rounded-2xl bg-on-dark/35" />
-            <div className="relative flex aspect-[3/4] -rotate-[2.5deg] flex-col items-center justify-between rounded-2xl bg-brand-blue-deep p-6 text-center shadow-card ring-1 ring-on-dark/20">
-              <Flower size={76} variant="light" />
-              <div>
-                <p className="text-xs font-bold tracking-widest text-on-dark/70">מדריך אישי</p>
-                <p className="font-display-tight text-[6rem] leading-none text-brand-pink">5</p>
-                <p className="text-lg font-extrabold leading-snug text-on-dark">תובנות וכלים מעשיים</p>
-              </div>
-              <p className="text-xs text-on-dark/70">מאת יובל סודאי</p>
+            <div className="relative aspect-[3/4] -rotate-[2.5deg] overflow-hidden rounded-2xl bg-brand-blue-deep text-center shadow-card ring-1 ring-on-dark/20">
+              <img
+                src={heroConflictDolls.url}
+                alt=""
+                className="absolute inset-0 size-full object-cover object-right -translate-y-[6%]"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-brand-blue-deep via-brand-blue-deep/85 to-transparent"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-brand-blue-deep via-brand-blue-deep/70 to-transparent"
+              />
+              <p className="absolute inset-x-5 top-[5%] font-display-tight text-3xl leading-tight text-on-dark md:text-4xl">
+                <span className="block">הלב</span>
+                <span className="block">שמאחורי המילים</span>
+              </p>
+              <p className="absolute inset-x-5 bottom-[20%] text-balance text-[0.7rem] font-bold leading-snug text-brand-pink md:text-[0.78rem]">
+                המדריך להעמקת הקשר ולהבנה הדדית בבית
+              </p>
             </div>
           </div>
           <div className="text-center md:text-right">
-            <h2 className="font-display-tight text-5xl text-on-dark sm:text-6xl">
+            <h2 className="font-display-tight text-[59px] text-on-dark sm:text-[72.5px]">
               מתנה למי שיישאר איתנו עד סוף המפגש
             </h2>
-            <h3 className="mt-6 text-2xl font-bold leading-snug text-brand-pink">
-              מדריך מתנה מאת יובל סודאי
+            <h3 className="mt-4 text-2xl font-bold leading-snug text-brand-pink">
+              הלב שמאחורי המילים
             </h3>
-            <div aria-hidden="true" className="mt-6 flex items-center justify-center gap-4 md:justify-start">
-              <span className="text-5xl font-light tabular-nums leading-none text-brand-pink">5</span>
-              <div className="flex gap-1.5 border-b border-brand-pink/40 pb-2">
-                {[1, 2, 3, 4, 5].map((n) => (
-                  <span key={n} className="h-5 w-1.5 rounded-sm bg-brand-pink/70" />
-                ))}
-              </div>
-            </div>
+            <p className="mt-1 text-lg font-semibold text-on-dark/85">
+              המדריך להעמקת הקשר ולהבנה הדדית בבית
+            </p>
             <p className="mt-5 text-lg text-on-dark/90">
               תובנות וכלים מעשיים מעולמו המקצועי של יובל, שיאפשרו לכם להמשיך לקחת איתכם מהמפגש גם לאחר סיומו.
             </p>
@@ -598,7 +609,7 @@ export function Index({ source }: { source: string }) {
           </p>
           <div className="mt-7">
             <ul className="flex flex-col items-center gap-2.5 text-[0.95rem] font-semibold">
-              {["יום רביעי | ח' כסלו | 18.11.2026", "20:30 | שידור חי בזום | ללא עלות"].map((t) => (
+              {["יום רביעי | ט״ו כסלו | 25.11.2026", "20:30 | שידור חי בזום | ללא עלות"].map((t) => (
                 <li key={t} className="rounded-full border border-on-dark/20 bg-on-dark/10 px-4 py-2 text-on-dark shadow-soft">
                   {t}
                 </li>
@@ -646,6 +657,8 @@ export function Index({ source }: { source: string }) {
         </div>
       </section>
 
+      </div>
+      <div className="campaign-floating-controls">
       {/* 14. וואטסאפ צף — שמאל */}
       <a
         href={WHATSAPP_URL}
@@ -674,6 +687,7 @@ export function Index({ source }: { source: string }) {
         </span>
         <span className="hidden text-sm font-bold text-brand-blue sm:inline">יש לנו מדריך!</span>
       </a>
+      </div>
     </div>
   );
 }

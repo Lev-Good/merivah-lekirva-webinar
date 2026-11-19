@@ -21,7 +21,7 @@ const optionalContact = z.string().trim().pipe(z.literal(""));
 type Errors = Partial<Record<"full_name" | "phone" | "email" | "consent" | "form", string>>;
 
 export function RegistrationForm({ source = null }: { source?: string | null }) {
-  const isProg = source === "prog";
+  const isProg = source === "prog" || source === "general";
   const [preferredChannel, setPreferredChannel] = useState<"email" | "whatsapp" | "">("");
   const phoneRequired = isProg ? preferredChannel === "whatsapp" : !emailSources.has(source ?? "");
   const emailRequired = isProg ? preferredChannel === "email" : !phoneRequired;
