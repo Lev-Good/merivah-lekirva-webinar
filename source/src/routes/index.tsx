@@ -24,6 +24,7 @@ import testimonial16 from "@/assets/testimonial-new-16.png.asset.json";
 import testimonial17 from "@/assets/testimonial-new-17.png.asset.json";
 import testimonial18 from "@/assets/testimonial-new-18.png.asset.json";
 
+
 const WHATSAPP_URL = "https://chat.whatsapp.com/Kh9aZcX6IkRE6XYOl8tFf4";
 
 // כדי להוסיף עדות חדשה: מייבאים את התמונה למעלה ומוסיפים אותה לרשימה הזו.
@@ -219,6 +220,27 @@ function NumberBadge({ n }: { n: number }) {
   );
 }
 
+/* Decorative mockup of the "קלפי הקרבה" couples card deck: a fan of face-down
+   petrol card backs and face-up cream cards with a heart. Brand tokens only. */
+function CardDeckMockup() {
+  return (
+    <div className="relative flex h-full w-full items-center justify-center" aria-hidden="true">
+      <span className="absolute h-[80%] w-auto aspect-[5/7] -translate-x-[62%] -rotate-[18deg] rounded-xl bg-brand-blue shadow-card ring-1 ring-on-dark/25">
+        <span className="absolute inset-[13%] rounded-lg border border-dashed border-on-dark/45" />
+      </span>
+      <span className="absolute h-[80%] w-auto aspect-[5/7] -translate-x-[26%] -rotate-[9deg] rounded-xl bg-brand-blue-deep shadow-card ring-1 ring-on-dark/30">
+        <span className="absolute inset-[13%] rounded-lg border border-dashed border-on-dark/45" />
+      </span>
+      <span className="absolute h-[80%] w-auto aspect-[5/7] translate-x-[10%] rotate-[6deg] rounded-xl bg-brand-cream shadow-card ring-1 ring-brand-blue-deep/25" />
+      <span className="absolute flex h-[86%] w-auto aspect-[5/7] translate-x-[46%] rotate-[15deg] items-center justify-center rounded-xl bg-brand-cream shadow-card ring-1 ring-brand-blue-deep/25">
+        <svg viewBox="0 0 24 24" className="h-[42%] w-[42%]" fill="var(--brand-pink)" aria-hidden="true">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+      </span>
+    </div>
+  );
+}
+
 const takeaways = [
   ["להפחית את עוצמת המריבות ולמנוע את המריבה הבאה.", "לזהות מה מוביל להסלמה, לעצור את המעגל החוזר ולבחור תגובה אחרת לפני שהוויכוח הופך למריבה."],
   ["להציב גבולות ולשמור על קווים אדומים.", "לדעת לזהות היכן עובר הגבול, איך לבטא אותו בצורה ברורה ואיך לשמור עליו בלי להחריף את העימות."],
@@ -244,7 +266,6 @@ const faqs = [
 ];
 
 export function Index({ source }: { source: string }) {
-
   return (
     <div className="campaign-page overflow-x-clip">
       <div className="campaign-page__content">
@@ -290,6 +311,9 @@ export function Index({ source }: { source: string }) {
                 <li key={detail} className="rounded-full bg-muted px-4 py-2 text-brand-blue-deep">{detail}</li>
               ))}
             </ul>
+            <p className="mt-4 rounded-full bg-brand-pink-soft px-4 py-2 text-center text-sm font-bold leading-relaxed text-brand-blue-deep sm:text-base">
+              🎁 מי שנשאר עד הסוף מקבל במתנה את "קלפי הקרבה" (שווי 200 ₪)
+            </p>
           </div>
           <div className="mt-7 flex justify-center">
             <Button asChild className="h-auto min-h-14 w-full max-w-md whitespace-normal rounded-full bg-brand-pink px-5 py-4 text-base font-bold text-brand-blue-deep shadow-soft hover:bg-brand-pink-soft hover:shadow-card sm:w-auto sm:px-10 sm:text-lg">
@@ -538,43 +562,28 @@ export function Index({ source }: { source: string }) {
             <div className="absolute inset-0 translate-x-3 translate-y-3 rotate-[2deg] rounded-2xl bg-on-dark/20" />
             <div className="absolute inset-0 translate-x-1.5 translate-y-1.5 rotate-[0deg] rounded-2xl bg-on-dark/35" />
             <div className="relative aspect-[3/4] -rotate-[2.5deg] overflow-hidden rounded-2xl bg-brand-blue-deep text-center shadow-card ring-1 ring-on-dark/20">
-              <img
-                src={heroConflictDolls.url}
-                alt=""
-                className="absolute inset-0 size-full object-cover object-right -translate-y-[6%]"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-brand-blue-deep via-brand-blue-deep/85 to-transparent"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-brand-blue-deep via-brand-blue-deep/70 to-transparent"
-              />
-              <p className="absolute inset-x-5 top-[5%] font-display-tight text-3xl leading-tight text-on-dark md:text-4xl">
-                <span className="block">הלב</span>
-                <span className="block">שמאחורי המילים</span>
+              <p className="absolute inset-x-5 top-[5%] font-display-tight text-2xl leading-tight text-on-dark md:text-3xl">
+                <span className="block">קלפי</span>
+                <span className="block">הקרבה</span>
               </p>
-              <p className="absolute inset-x-5 bottom-[20%] text-balance text-[0.7rem] font-bold leading-snug text-brand-pink md:text-[0.78rem]">
-                המדריך להעמקת הקשר ולהבנה הדדית בבית
+              <div className="absolute inset-x-0 top-[29%] bottom-[37%] md:top-[30%] md:bottom-[36%]">
+                <CardDeckMockup />
+              </div>
+              <p className="absolute inset-x-4 bottom-[9%] text-balance text-[0.62rem] font-bold leading-snug md:text-[0.72rem]">
+                <span className="text-brand-pink">חוויה זוגית אמיתית לחיבור בין בני הזוג — לא עוד רשימת טיפים.</span>{" "}
+                <span className="text-on-dark/85">מערבבים, שולפים קלף, קוראים בקול — ומדברים. 18 דילמות ועקרונות זוגיים אמיתיים שהופכות לשיחה פתוחה, ומשאירות חשק להמשיך. שווי 200 ₪, הערב במתנה.</span>
               </p>
             </div>
           </div>
           <div className="text-center md:text-right">
-            <h2 className="font-display-tight text-[59px] text-on-dark sm:text-[72.5px]">
-              מתנה למי שיישאר איתנו עד סוף המפגש
+            <p className="text-sm font-bold leading-relaxed text-brand-pink sm:text-base">
+              🎁 מתנה למשתתפים שנשארים עד סוף המפגש
+            </p>
+            <h2 className="mt-3 font-display-tight text-[59px] text-on-dark sm:text-[72.5px]">
+              קלפי הקרבה
             </h2>
-            <h3 className="mt-4 text-2xl font-bold leading-snug text-brand-pink">
-              הלב שמאחורי המילים
-            </h3>
-            <p className="mt-1 text-lg font-semibold text-on-dark/85">
-              המדריך להעמקת הקשר ולהבנה הדדית בבית
-            </p>
-            <p className="mt-5 text-lg text-on-dark/90">
-              תובנות וכלים מעשיים מעולמו המקצועי של יובל, שיאפשרו לכם להמשיך לקחת איתכם מהמפגש גם לאחר סיומו.
-            </p>
-            <p className="mt-6 border-t border-on-dark/20 pt-5 text-base font-semibold text-on-dark">
-              המדריך יוענק למשתתפים שיישארו עד סוף המפגש.
+            <p className="mt-4 text-lg font-semibold leading-relaxed text-on-dark/90 sm:text-xl">
+              חוויה זוגית אמיתית לחיבור בין בני הזוג — לא עוד רשימת טיפים. מערבבים, שולפים קלף, קוראים בקול — ומדברים. 18 דילמות ועקרונות זוגיים אמיתיים שהופכות לשיחה פתוחה, ומשאירות חשק להמשיך. <span className="whitespace-nowrap">שווי 200 ₪, הערב במתנה.</span>
             </p>
           </div>
         </div>
@@ -675,17 +684,17 @@ export function Index({ source }: { source: string }) {
         </span>
       </a>
 
-      {/* 15. מדריך צף — ימין */}
+      {/* 15. משחק זוגי צף — ימין */}
       <a
         href="#register"
         onClick={scrollToForm}
-        aria-label="יש לנו מדריך! להרשמה"
+        aria-label="יש לנו משחק זוגי כיפי! להרשמה"
         className="animate-float-delayed fixed bottom-4 right-4 z-40 flex items-center gap-2 rounded-full bg-card p-1.5 pe-1.5 shadow-card sm:pe-4"
       >
         <span className="flex size-12 items-center justify-center rounded-full bg-brand-blue">
           <Flower size={34} variant="light" />
         </span>
-        <span className="hidden text-sm font-bold text-brand-blue sm:inline">יש לנו מדריך!</span>
+        <span className="hidden text-sm font-bold text-brand-blue sm:inline">יש לנו משחק זוגי כיפי!</span>
       </a>
       </div>
     </div>
