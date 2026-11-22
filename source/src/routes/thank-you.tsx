@@ -47,7 +47,7 @@ export function ThankYou() {
         />
         <h1 className="font-display-tight text-5xl sm:text-7xl">איזה יופי שנרשמתם! 🎉</h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
-          קיבלנו את הפרטים שלכם למפגש ביום רביעי 25.11.2026 בשעה 20:30. קישור ההרשמה לזום יפורסם בהמשך.
+          קיבלנו את הפרטים שלכם למפגש ביום רביעי 25.11.2026 בשעה 20:30.
         </p>
         <ul className="mt-8 flex flex-wrap justify-center gap-2.5 text-[0.95rem] font-semibold">
           {["📅 יום רביעי | 25.11.2026 (ט״ו כסלו)", "🕣 בשעה 20:30", "💻 בזום, מהבית"].map((detail) => (
@@ -58,12 +58,17 @@ export function ThankYou() {
         </ul>
         <div className="mt-10 w-full max-w-xl rounded-2xl border border-border bg-card px-6 py-7 text-center shadow-soft">
           <p className="text-lg font-bold leading-relaxed text-brand-blue sm:text-xl">
-            קישור הכניסה האישי שלך יישלח אליך בוואטסאפ ובמייל
+            קישור ההרשמה למפגש בזום
           </p>
           <p className="mt-2 text-sm leading-relaxed text-brand-clay sm:text-base">
-            אין צורך לעשות שום דבר נוסף כרגע.
+            השלימו את ההרשמה בזום כדי לקבל מייל אישור עם קישור כניסה אישי.
           </p>
         </div>
+        <Button asChild className="btn-pill mt-4">
+          <a href="https://us06web.zoom.us/meeting/register/86udTa1TTT6Y9Bx54mHXnQ" target="_blank" rel="noopener noreferrer">
+            הרשמה למפגש בזום
+          </a>
+        </Button>
         <Button asChild className="btn-pill mt-4 h-auto max-w-full whitespace-normal bg-brand-pink text-brand-blue shadow-soft hover:bg-brand-pink hover:shadow-card">
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             הצטרפו לקבוצת הוואטסאפ של יובל ←
