@@ -18,7 +18,13 @@ for (const source of channels) {
   await writeFile(channelDir + "/thank-you/index.html", thanks);
 }
 
-const links = channels.map(source => '<li><a href="./' + source + '/" dir="ltr">' + source + '</a></li>').join("\n");
+await mkdir("dist/quiz", { recursive: true });
+const quizPage = template.replace('id="root"', 'id="root" data-page="quiz"')
+  .replace(/<title>.*?<\/title>/, "<title>איפה הזוגיות שלכם ממש עומדת? — שאלון עם יובל סודאי</title>");
+await writeFile("dist/quiz/index.html", quizPage);
+
+const links = channels.map(source => '<li><a href="./' + source + '/" dir="ltr">' + source + '</a></li>').join("\n")
+  + '\n<li><a href="./quiz/" dir="ltr">quiz (שאלון זוגיות)</a></li>';
 const directory = template.replace(/<script type="module"[^>]*><\/script>/g, "")
   .replace('<div id="root"></div>', '<main><h1>ממריבה לקרבה — קישורים לפי ערוץ</h1><ul>' + links + '</ul></main>')
   .replace(/<noscript>.*?<\/noscript>/, "");
