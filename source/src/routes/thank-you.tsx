@@ -58,15 +58,15 @@ export function ThankYou() {
         </ul>
         <div className="mt-10 w-full max-w-xl rounded-2xl border border-border bg-card px-6 py-7 text-center shadow-soft">
           <p className="text-lg font-bold leading-relaxed text-brand-blue sm:text-xl">
-            הצטרפתם באופן אוטומטי למפגש בזום
+            שלב אחרון: הרשמה למפגש בזום
           </p>
           <p className="mt-2 text-sm leading-relaxed text-brand-clay sm:text-base">
-            מייל אישור עם קישור כניסה אישי נשלח אליכם כעת מ-Zoom. אם לא קיבלתם או תרצו לוודא – לחצו למטה.
+            לחצו על הכפתור למטה כדי להשלים את ההרשמה ב-Zoom ולקבל מייל אישור עם קישור כניסה אישי.
           </p>
         </div>
         <Button asChild className="btn-pill mt-4">
           <a href="https://us06web.zoom.us/webinar/register/WN_yGDggiizS7S9jJhc3S7GwA" target="_blank" rel="noopener noreferrer">
-            בדקו כדי לוודא שהצטרפתם למפגש
+            להשלמת ההרשמה למפגש בזום ←
           </a>
         </Button>
         <Button asChild className="btn-pill mt-4 h-auto max-w-full whitespace-normal bg-brand-pink text-brand-blue shadow-soft hover:bg-brand-pink hover:shadow-card">
