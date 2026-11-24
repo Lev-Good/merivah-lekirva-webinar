@@ -65,7 +65,7 @@ export function ThankYou() {
           </p>
         </div>
         <Button asChild className="btn-pill mt-4">
-          <a href="https://us06web.zoom.us/meeting/register/86udTa1TTT6Y9Bx54mHXnQ" target="_blank" rel="noopener noreferrer">
+          <a href="https://us06web.zoom.us/webinar/register/WN_yGDggiizS7S9jJhc3S7GwA" target="_blank" rel="noopener noreferrer">
             בדקו כדי לוודא שהצטרפתם למפגש
           </a>
         </Button>
